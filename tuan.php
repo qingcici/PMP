@@ -7,26 +7,21 @@ class tuan
 	 function  count($x,$y)
 	{
 		//11  2   22   6    12  3
-
-		
 		$num=0;
-		$i=0;
-		if($x==$y){
-			while ( $i < $x) {
-				$i++;
-				$num+=$i*2;
-			}
-			return $num;
+		$arr=[];
+		if($x==0&&$y==0){
+			return 0;
 		}
-		if($x!=$y){
-			$num=$x*$y+1;
-			return $num;
+		if($x==0||$y==0){
+			return 1;
 		}
-
-
+		return $this->count($x-1,$y)+$this->count($x,$y-1);
+	}
+	function main($x,$y){
+		$num=$this->count($x,$y);
 		return $num;
 	}
 }
 $class=new tuan;
-$res=$class->count(2,3);
+$res=$class->main(3,2);
 print_r($res);
